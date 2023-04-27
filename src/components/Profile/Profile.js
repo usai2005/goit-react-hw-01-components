@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
 import css from './Profile.module.css';
 
-export const Profile = ({imageUrl, name, tag, location, followers, views, likes}) => {
-    
-    return (
+export const Profile = ({ imageUrl, name, tag, location, stats }) => {
+  const { followers, views, likes } = stats;
+
+  return (
     <div className={css.profile}>
       <div className={css.description}>
-        <img
-          src={imageUrl}
-          alt={name}
-          className={css.avatar}
-        />
+        <img src={imageUrl} alt={name} className={css.avatar} />
         <p className={css.name}>{name}</p>
         <p className={css.tag}>{tag}</p>
         <p className={css.location}>{location}</p>
@@ -27,19 +24,21 @@ export const Profile = ({imageUrl, name, tag, location, followers, views, likes}
         </li>
         <li>
           <span className={css.label}>Likes</span>
-            <span className={css.quantity}>{likes}</span>
+          <span className={css.quantity}>{likes}</span>
         </li>
       </ul>
     </div>
-    );
+  );
 };
 
 Profile.propTypes = {
-    imageUrl: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  stats: PropTypes.exact({
     followers: PropTypes.number.isRequired,
     views: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired,
+  }).isRequired,
 };

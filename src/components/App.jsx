@@ -9,22 +9,17 @@ import transactions from '../data/transactions.json';
 
 export const App = () => {
   return (
-    <>    
-    <Profile
-      imageUrl={user.avatar}
-      name={user.username}
-      tag={user.tag}
-      location={user.location}
-      followers={user.stats.followers}
-      views={user.stats.views}
-      likes={user.stats.likes}
-    />
-    <Statistics
-      title='Upload stats'
-      stats={data}
-    />
-    <FriendList friends={friends}/>
-    <TransactionHistory items={transactions}/>
+    <>
+      <Profile
+        imageUrl={user.avatar}
+        name={user.username}
+        tag={user.tag}
+        location={user.location}
+        stats={user.stats}
+      />
+      <Statistics title="Upload stats" stats={data} />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </>
   );
 };
